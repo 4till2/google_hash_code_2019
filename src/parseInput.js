@@ -9,7 +9,7 @@ const parse = (filename) => {
 	readlineSync(filename, (line) => {
 		const arr = line.split(' ');
 		const obj = {
-			id: i + 1,
+			id: i - 1,
 			direction: '',
 			tags: []
 		};
@@ -20,13 +20,14 @@ const parse = (filename) => {
 				}
 				if (index > 1) {
 					obj.tags.push(elem);
-					data.pics.push(obj);
 				}
-			})
+			});
+			data.pics.push(obj);
 		} else { data.nbOfPics = parseInt(arr[0]) }
 		i++;
 	});
 	return data;
 }
 
+console.log(parse('../dataset/a_example.txt'));
 module.exports = parse;
