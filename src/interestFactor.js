@@ -37,6 +37,8 @@ const getAllInterestFactors = (pics) => {
                 pic.interest[`${tmpPic.id}`] = calcInterestFactor(pic, tmpPic);
             }
         }
+        if (pic.id % 50 === 0)
+            console.log(`Finished calculating interests for pic #${pic.id}`);
     }
     return pics;
 }
