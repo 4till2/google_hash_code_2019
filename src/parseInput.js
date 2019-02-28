@@ -29,5 +29,4 @@ const parse = (filename) => {
 	return data;
 }
 
-console.log(parse('../dataset/a_example.txt'));
 module.exports = parse;

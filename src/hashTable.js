@@ -20,4 +20,7 @@ const TagTable = {
     }
 }
 
+/*  for all images 
+        for all tags in image   
+           add image to tag in table */
 module.exports = TagTable;

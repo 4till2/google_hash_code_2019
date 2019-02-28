@@ -1,6 +1,7 @@
 /*
 ** Calculates the interest factor by the following function
 ** min(pic1 diferent tags, pic1 and 2 common tags. pic2 different tags)
+** parameters: 2 picture objects to compare
 */
 
 const calcInterestFactor = (pic1, pic2) => {
@@ -23,18 +24,24 @@ const calcInterestFactor = (pic1, pic2) => {
     return Math.min(pic1dif.length, pic2dif.length, common.length);
 }
 
-const testModule = () => {
-    pic1 = {
-        direction: 'V',
-        tags: ['bird', 'home', 'zipper', 'bruno', 'hello']
+/*
+** Calculates the interest factor of all the images against all other images
+** parameter: list of pictures
+*/
+
+const getAllInterestFactors = (pics) => {
+    for (pic of pics.pics) {
+        pic.interest = {};
+        for (tmpPic of pics.pics) {
+            if (tmpPic !== pic) {
+                pic.interest[`${tmpPic.id}`] = calcInterestFactor(pic, tmpPic);
+            }
+        }
     }
-    pic2 = {
-        direction: 'V',
-        tags: ['benito', 'home', 'jose', 'bruno', 'confusion', 'hello', 'nsdaf']
-    }
-    console.log(calcInterestFactor(pic1, pic2));
+    return pics;
 }
 
-module.export = {
-    calcInterestFactor
+module.exports = {
+    calcInterestFactor,
+    getAllInterestFactors
 }
