@@ -14,4 +14,4 @@ let TagTable = {
 
 /*  for all images 
         for all tags in image   
-           add image to tag in table
+           add image to tag in table */
